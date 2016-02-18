@@ -22,3 +22,20 @@ let {m2,n2:{p2}} = { m2:123, n2: { p2:111}};
 let {x1:x,y1:y} = {x1:123,y1:33};
 
 }
+
+interface $http{
+    get(url:string, handler:any):any;
+}
+
+var $http:$http;
+interface ICountryInfo{
+    Id: number;
+    name: string;
+    code: string;
+}
+
+function getCountries():void{
+    $http.get("/api/countries",  ({payload:{wrapper:{objects}}})=>{
+        console.log(objects);
+    });
+}
